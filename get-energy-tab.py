@@ -22,7 +22,7 @@ def find_last_energy_value(res_of_query, measurement):
         curr_energy = point['energy']
     
 
-def main():
+def get_energy_table():
     client_influx = InfluxDBClient("perets.su")
     client_influx.switch_database("electrical")
 
@@ -58,4 +58,4 @@ def main():
         print(key, val)
 
 if __name__ == "__main__":
-    main()
+    get_energy_table()
