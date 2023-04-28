@@ -27,7 +27,7 @@ def main():
     client_influx.switch_database("electrical")
 
     """
-    Получаем данные с pzem-004
+    Getting data from pzem-004
     """
     phases = ['phase1', 'phase2', 'phase3']
     result_table = {}
@@ -42,7 +42,7 @@ def main():
         result_table[date_key].append(round(sum(result_table[date_key][0:3]), 1))
 
     """
-    Получаем данные счетчика на столбе
+    Getting data from electric meter on the street
     """
     res_of_query = client_influx.query("select time, value from ElectricityMeterReader order by time desc limit 13")
     last_value = -1
