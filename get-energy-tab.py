@@ -46,14 +46,15 @@ def get_energy_table():
     """
     res_of_query = client_influx.query("select time, value from ElectricityMeterReader order by time desc limit 13")
     last_value = -1
-    for point in res_of_query.get_points():
+    res_points = [x for x in res_of_query.get_points()]
+    for i, point in enumerate(res_points):
         if last_value > 0:
             curr_value = last_value - point["value"]
-            d = point["time"].split('-')[:2]
+            d = res_points[i-1]["time"].split('-')[:2]
             date_key = str(calendar.month_name[int(d[1])]) + ' ' + d[0]
             result_table[date_key].append(curr_value)
         last_value = point["value"]
-
+        
     for key, val in result_table.items():
         print(key, val)
 
