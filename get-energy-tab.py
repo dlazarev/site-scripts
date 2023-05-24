@@ -58,8 +58,9 @@ def get_energy_table():
                 
         last_value = point["value"]
         
-    for key, val in result_table.items():
-        print(key, val)
+    return result_table
 
 if __name__ == "__main__":
-    get_energy_table()
+    result_table = get_energy_table()
+    for key, val in result_table.items():
+        print(key, val)
