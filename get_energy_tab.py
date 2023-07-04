@@ -20,6 +20,8 @@ def find_last_energy_value(res_of_query, measurement):
         if curr_energy < point['energy']:
             return point
         curr_energy = point['energy']
+    return point
+    
     
 
 def get_energy_table():
